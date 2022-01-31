@@ -14,11 +14,14 @@ class RedButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          TextButton(
-            onPressed: () {},
-            child: Text(
-              text,
-              style: TextStyle(color: kContentColor, fontSize: 20),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextButton(
+              onPressed: () {},
+              child: Text(
+                text,
+                style: TextStyle(color: kContentColor, fontSize: 20),
+              ),
             ),
           ),
         ],
