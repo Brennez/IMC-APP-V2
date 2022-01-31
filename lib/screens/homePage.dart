@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imcv2/consts/colors/colors.dart';
+import 'package:imcv2/screens/resultPage.dart';
 import 'package:imcv2/widgets/button.dart';
 import 'package:imcv2/widgets/redButton.dart';
 
@@ -314,7 +315,19 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          RedButton(text: "CALCULAR"),
+          RedButton(
+            text: "CALCULAR",
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return ResultPage();
+                  },
+                ),
+              );
+            },
+          ),
         ],
       ),
     );

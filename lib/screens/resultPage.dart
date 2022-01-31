@@ -76,7 +76,10 @@ class _ResultPageState extends State<ResultPage> {
               ),
             ),
           ),
-          RedButton(text: "Re-calcular")
+          RedButton(
+            text: "Re-calcular",
+            onTap: () {},
+          )
         ],
       ),
     );

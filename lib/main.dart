@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:imcv2/screens/resultPage.dart';
 
 import 'screens/homePage.dart';
 
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: const Color(0XFF04040C),
       ),
-      home: ResultPage(),
+      home: HomePage(),
     );
   }
 }
