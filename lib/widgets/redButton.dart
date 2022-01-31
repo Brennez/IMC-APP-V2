@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:imcv2/consts/colors/colors.dart';
 
 class RedButton extends StatelessWidget {
-  const RedButton({Key? key, required this.onPressed, required this.text})
-      : super(key: key);
+  const RedButton({Key? key, required this.text}) : super(key: key);
 
-  final Function onPressed;
   final String text;
 
   @override
@@ -17,7 +15,7 @@ class RedButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           TextButton(
-            onPressed: onPressed(),
+            onPressed: () {},
             child: Text(
               text,
               style: TextStyle(color: kContentColor, fontSize: 20),

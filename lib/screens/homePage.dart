@@ -12,6 +12,26 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   double valorAtual = 1;
+  int peso = 50;
+  int idade = 20;
+  bool isMale = false;
+  bool isFemale = false;
+
+  toggleMale() {
+    setState(() {
+      if (isFemale == false) {
+        isMale = !isMale;
+      }
+    });
+  }
+
+  toggleFemale() {
+    setState(() {
+      if (isMale == false) {
+        isFemale = !isFemale;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                       left: 8.0, right: 8.0, top: 30.0, bottom: 30.0),
                   margin: const EdgeInsets.all(8.0),
                   decoration: BoxDecoration(
-                    color: ksecondaryColor,
+                    color: isMale ? kprimaryColorWithShade : ksecondaryColor,
                     borderRadius: BorderRadius.circular(5),
                   ),
                   child: Column(
@@ -46,7 +66,9 @@ class _HomePageState extends State<HomePage> {
                           Icons.male,
                           color: Colors.white,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          toggleMale();
+                        },
                       ),
                       const Text(
                         "MASCULINO",
@@ -64,18 +86,20 @@ class _HomePageState extends State<HomePage> {
                       left: 8.0, right: 8.0, top: 30.0, bottom: 30.0),
                   margin: const EdgeInsets.all(8.0),
                   decoration: BoxDecoration(
-                    color: ksecondaryColor,
+                    color: isFemale ? kprimaryColorWithShade : ksecondaryColor,
                     borderRadius: BorderRadius.circular(5),
                   ),
                   child: Column(
                     children: [
                       IconButton(
                         iconSize: 60,
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.female,
                           color: Colors.white,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          toggleFemale();
+                        },
                       ),
                       const Text(
                         "FEMININO",
@@ -110,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "211",
+                        valorAtual.round().toString(),
                         style: TextStyle(
                             color: kContentColor,
                             fontSize: 60,
@@ -132,7 +156,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Slider(
                     max: 300,
-                    divisions: 300,
                     thumbColor: kredColor,
                     value: valorAtual,
                     label: valorAtual.round().toString(),
@@ -162,7 +185,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   child: Column(
                     children: [
-                      Text(
+                      const Text(
                         "PESO",
                         style: TextStyle(
                           color: kcontentIconColor,
@@ -173,14 +196,14 @@ class _HomePageState extends State<HomePage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "23",
-                            style: TextStyle(
+                            "$peso",
+                            style: const TextStyle(
                               color: kContentColor,
                               fontSize: 60,
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 20),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 20),
                             child: Text(
                               "Kg",
                               style: TextStyle(
@@ -193,9 +216,27 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: const [
-                          Button(icon: Icons.add),
-                          Button(icon: Icons.remove),
+                        children: [
+                          Button(
+                            icon: Icons.remove,
+                            onPressed: () {
+                              setState(() {
+                                if (peso > 0) {
+                                  peso--;
+                                }
+                              });
+                            },
+                          ),
+                          Button(
+                            icon: Icons.add,
+                            onPressed: () {
+                              setState(() {
+                                if (peso < 250) {
+                                  peso++;
+                                }
+                              });
+                            },
+                          ),
                         ],
                       )
                     ],
@@ -204,7 +245,7 @@ class _HomePageState extends State<HomePage> {
               ),
               Expanded(
                 child: Container(
-                  padding: EdgeInsets.only(
+                  padding: const EdgeInsets.only(
                       left: 8.0, right: 8.0, top: 30.0, bottom: 30.0),
                   margin: const EdgeInsets.all(8.0),
                   decoration: BoxDecoration(
@@ -213,7 +254,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   child: Column(
                     children: [
-                      Text(
+                      const Text(
                         "IDADE",
                         style: TextStyle(
                           color: kcontentIconColor,
@@ -224,14 +265,14 @@ class _HomePageState extends State<HomePage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "30",
-                            style: TextStyle(
+                            "$idade",
+                            style: const TextStyle(
                               color: kContentColor,
                               fontSize: 60,
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 20),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 20),
                             child: Text(
                               "Anos",
                               style: TextStyle(
@@ -244,9 +285,27 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: const [
-                          Button(icon: Icons.add),
-                          Button(icon: Icons.remove),
+                        children: [
+                          Button(
+                            icon: Icons.remove,
+                            onPressed: () {
+                              setState(() {
+                                if (idade > 0) {
+                                  idade--;
+                                }
+                              });
+                            },
+                          ),
+                          Button(
+                            icon: Icons.add,
+                            onPressed: () {
+                              setState(() {
+                                if (idade < 180) {
+                                  idade++;
+                                }
+                              });
+                            },
+                          ),
                         ],
                       )
                     ],
@@ -255,7 +314,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          RedButton(onPressed: () {}, text: "CALCULAR"),
+          RedButton(text: "CALCULAR"),
         ],
       ),
     );
