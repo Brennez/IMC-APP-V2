@@ -16,8 +16,7 @@ class RedButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          Expanded(
             child: TextButton(
               onPressed: () {
                 onTap();

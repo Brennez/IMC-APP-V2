@@ -25,18 +25,19 @@ class CalculadoraIMC {
 
   double calculaImc(int peso, int altura) {
     double imc;
-    imc = peso / pow(altura / 100, 2);
+    imc = peso / pow((altura / 100), 2);
     return imc;
   }
 
-  Categoria getCategoria(imc) {
+  Categoria getCategoria(double valor) {
+    int imc = valor.toInt();
     if (imc < 19) {
       return Categoria.magreza;
-    } else if (imc >= 19.0 || imc <= 25.0) {
+    } else if (imc >= 19 && imc <= 25) {
       return Categoria.normal;
-    } else if (imc >= 25.0 || imc <= 30.0) {
+    } else if (imc >= 25 && imc <= 30) {
       return Categoria.sobrepeso;
-    } else if (imc >= 30.0 || imc <= 40.0) {
+    } else if (imc >= 30 && imc <= 40) {
       return Categoria.obesidade;
     } else {
       return Categoria.obesidadeGrave;
