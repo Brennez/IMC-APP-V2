@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imcv2/consts/colors/colors.dart';
+import 'package:imcv2/resultado.dart';
 import 'package:imcv2/screens/resultPage.dart';
 import 'package:imcv2/widgets/button.dart';
 import 'package:imcv2/widgets/redButton.dart';
@@ -12,7 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  double valorAtual = 1;
+  double altura = 1;
   int peso = 50;
   int idade = 20;
   bool isMale = false;
@@ -135,7 +136,7 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        valorAtual.round().toString(),
+                        altura.round().toString(),
                         style: TextStyle(
                             color: kContentColor,
                             fontSize: 60,
@@ -158,13 +159,12 @@ class _HomePageState extends State<HomePage> {
                   Slider(
                     max: 300,
                     thumbColor: kredColor,
-                    value: valorAtual,
-                    label: valorAtual.round().toString(),
+                    value: altura,
+                    label: altura.round().toString(),
                     onChanged: (valor) {
                       setState(
                         () {
-                          valorAtual = valor;
-                          print(valorAtual.toInt());
+                          altura = valor;
                         },
                       );
                     },
@@ -318,11 +318,15 @@ class _HomePageState extends State<HomePage> {
           RedButton(
             text: "CALCULAR",
             onTap: () {
+              CalculadoraIMC c = CalculadoraIMC();
+              Resultado resultado = c.getResultado(peso, altura.toInt());
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return ResultPage();
+                    return ResultPage(
+                      resultado: resultado,
+                    );
                   },
                 ),
               );

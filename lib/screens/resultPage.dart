@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:imcv2/consts/colors/colors.dart';
+import 'package:imcv2/resultado.dart';
 import 'package:imcv2/widgets/redButton.dart';
 
-class ResultPage extends StatefulWidget {
-  const ResultPage({Key? key}) : super(key: key);
+class ResultPage extends StatelessWidget {
+  const ResultPage({Key? key, required this.resultado}) : super(key: key);
 
-  @override
-  _ResultPageState createState() => _ResultPageState();
-}
+  final Resultado resultado;
 
-class _ResultPageState extends State<ResultPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,11 +55,11 @@ class _ResultPageState extends State<ResultPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    "SOBREPESO",
+                    resultado.categoria.name.toUpperCase(),
                     style: TextStyle(color: Colors.green, fontSize: 26),
                   ),
                   Text(
-                    "13.3",
+                    resultado.valor.toStringAsFixed(1),
                     style: TextStyle(
                       color: kContentColor,
                       fontSize: 80,
@@ -69,7 +67,7 @@ class _ResultPageState extends State<ResultPage> {
                     ),
                   ),
                   Text(
-                    "Voê está um pouco acima do peso, procure uma nutricionista.",
+                    resultado.descricao,
                     style: TextStyle(color: kContentColor, fontSize: 16),
                   )
                 ],
